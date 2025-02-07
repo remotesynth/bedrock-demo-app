@@ -1,6 +1,6 @@
 import {
   BedrockRuntimeClient,
-  InvokeModelCommand,
+  ConverseCommand,
 } from '@aws-sdk/client-bedrock-runtime';
 
 const PLATFORM_CHR_LIMITS = {
@@ -26,18 +26,19 @@ The response should only contain the revised message, nothing else.`;
 };
 
 const invokeModel = async (prompt) => {
-  const command = new InvokeModelCommand({
+  const command = new ConverseCommand({
     modelId: 'meta.llama3-8b-instruct-v1:0',
-    body: JSON.stringify({
-      messages: [
-        {
-          role: 'user',
-          content: prompt,
-        },
-      ],
-      temperature: 0.7,
-    }),
-    contentType: 'application/json',
+    messages: [
+      {
+        role: 'user',
+        content: [
+          {
+            text: prompt,
+          },
+        ],
+      },
+    ],
+    temperature: 0.7,
   });
 
   try {
