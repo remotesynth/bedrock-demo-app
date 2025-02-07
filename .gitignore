@@ -1,8 +1,14 @@
-*.js
-!jest.config.js
-*.d.ts
 node_modules
-
-# CDK asset staging directory
-.cdk.staging
-cdk.out
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+lambda/Archive.zip
+cdk/outfile.txt
+cdk/cdk.out
+cdk/cdk.context.json
+cdk/cdk.context.json.bin
+cdk/cdk.out
+cdk/cdk.out.zip
+.DS_Store
